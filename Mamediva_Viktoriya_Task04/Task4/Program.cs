@@ -12,27 +12,27 @@ namespace Task4
         {
             string str = "";
             StringBuilder sb = new StringBuilder();
-            Stopwatch sw = new Stopwatch();
+            Stopwatch timer = new Stopwatch();
             int n = 100;
-            sw.Start();
+            timer.Start();
 
             for (int i = 0; i < n; i++)
             {
                 str += "*";
             }
 
-            sw.Stop();
-            Console.WriteLine($"String: {sw.Elapsed.TotalMilliseconds}");
-            sw.Reset();
-            sw.Start();
+            timer.Stop();
+            Console.WriteLine($"String: {timer.Elapsed.TotalMilliseconds}");
+            timer.Reset();
+            timer.Start();
 
             for (int i = 0; i < n; i++)
             {
                 sb.Append("*");
             }
 
-            sw.Stop();
-            Console.WriteLine($"StringBuilder: {sw.Elapsed.TotalMilliseconds}");
+            timer.Stop();
+            Console.WriteLine($"StringBuilder: {timer.Elapsed.TotalMilliseconds}");
             Console.ReadKey();
         }
     }
