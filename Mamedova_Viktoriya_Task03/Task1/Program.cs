@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using HelperFunctions;
 
 namespace Task1
 {
@@ -23,30 +24,25 @@ namespace Task1
                     }
                 }
             }
+
             return array;
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Одномерный массив случайных чисел:");
-            int[] RandomArray = new int[15];
-            Random random = new Random();
+            int[] randomArray = new int[15];
+            randomArray = HelperFunction.CreateRandomArray(randomArray);
+            randomArray = SortArray(randomArray);
 
-            for (int i = 0; i < RandomArray.Length; i++)
-            {
-                RandomArray[i] = random.Next(-15, 15);
-            }
-
-            RandomArray = SortArray(RandomArray);
-
-            for (int i = 0; i < RandomArray.Length; i++)
+            for (int i = 0; i < randomArray.Length; i++)
 
             {
-                Console.WriteLine($"Элемент[{i}] = {RandomArray[i]} ");
+                Console.WriteLine($"Элемент[{i}] = {randomArray[i]} ");
             }
 
-            Console.WriteLine($"Минимальное значение массива = {RandomArray[0]}");
-            Console.WriteLine($"Максимальное значение массива = {RandomArray[RandomArray.Length - 1]}");
+            Console.WriteLine($"Минимальное значение массива = {randomArray[0]}");
+            Console.WriteLine($"Максимальное значение массива = {randomArray[randomArray.Length - 1]}");
             Console.ReadKey();
         }
     }
