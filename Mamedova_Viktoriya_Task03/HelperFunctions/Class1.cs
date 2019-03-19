@@ -8,19 +8,15 @@ namespace HelperFunctions
 {
     public class HelperFunction
     {
-        public static int ReadNumber()
+        public static int[] CreateRandomArray(int[] randomArray)
         {
-            var input = Console.ReadLine();
-            int number;
-
-            while (!int.TryParse(input, out number) || number <= 0)
+            Random random = new Random();
+            for (int i = 0; i < randomArray.Length; i++)
             {
-                Console.WriteLine("Ошибка, введите любое число больше нуля!");
-                input = Console.ReadLine();
-                int.TryParse(input, out number);
+                randomArray[i] = random.Next(-15, 15);
             }
 
-            return number;
+            return randomArray;
         }
     }
 }
