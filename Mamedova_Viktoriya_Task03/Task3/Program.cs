@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using HelperFunctions;
 
 namespace Task3
 {
@@ -10,32 +11,30 @@ namespace Task3
         static int Sum(int[] array)
         {
             int sum = 0;
+
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > 0)
+                if (array[i] >= 0)
                 {
                     sum += array[i];
                 }
             }
+
             return sum;
         }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Одномерный массив случайных чисел:");
-            int[] RandomArray = new int[15];
-            Random random = new Random();
+            int[] randomArray = new int[15];
+            randomArray = HelperFunction.CreateRandomArray(randomArray);
 
-            for (int i = 0; i < RandomArray.Length; i++)
+            for (int i = 0; i < randomArray.Length; i++)
             {
-                RandomArray[i] = random.Next(-15, 15);
+                Console.WriteLine($"Элемент[{i + 1}] = {randomArray[i]}");
             }
 
-            for (int i = 0; i < RandomArray.Length; i++)
-            {
-                Console.WriteLine($"Элемент[{i + 1}] = {RandomArray[i]}");
-            }
-
-            Console.WriteLine($"Сумма неотрицательных элементов массива = {Sum(RandomArray)}");
+            Console.WriteLine($"Сумма неотрицательных элементов массива = {Sum(randomArray)}");
             Console.ReadKey();
         }
     }
