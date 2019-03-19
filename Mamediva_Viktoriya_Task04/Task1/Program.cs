@@ -15,19 +15,19 @@ namespace Task1
             string[] words = input.Split(exception, StringSplitOptions.RemoveEmptyEntries);
             var amount = 0;
             var number = 0;
-            var WordCount = 0f;
+            var wordCount = 0f;
 
             foreach (string word in words)
             {
                 if (!int.TryParse(word, out number))
                 {
                     amount += word.Length;
-                    WordCount++;
+                    wordCount++;
                     Console.WriteLine($"Слово: {word}; Длина = {word.Length}");
                 }
             }
 
-            Console.WriteLine($"Средняя длина слова в строке = {amount / WordCount}");
+            Console.WriteLine($"Средняя длина слова в строке = {amount / wordCount}");
             Console.ReadKey();
         }
     }
