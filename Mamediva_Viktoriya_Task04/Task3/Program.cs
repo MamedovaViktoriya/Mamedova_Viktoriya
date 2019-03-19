@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,39 +43,28 @@ namespace Task3
             Console.ReadKey();
         }
 
-        public static void OutputCulture(string firstCulture, string secondCulture)
+        public static void OutputCulture(string firstCultureId, string secondCultureId)
         {
+            var firstCulture = CultureInfo.CreateSpecificCulture(firstCultureId);
+            CultureInfo secondCulture = secondCultureId != "invariant"
+                ? CultureInfo.CreateSpecificCulture(secondCultureId)
+                : CultureInfo.InvariantCulture;
+    
             DateTime now = DateTime.Now;
             double firstNum = 48756.2539;
             string date = "d";
             string secondNum = "F";
             string numInvar = "e4";
 
-            if (secondCulture != "invariant")
-            {
-                Console.WriteLine($"Число {firstCulture} " +
-                    $"{firstNum.ToString(secondNum, CultureInfo.CreateSpecificCulture(firstCulture))}" +
-                    $" vs Число {secondCulture}" +
-                    $" {firstNum.ToString(numInvar, CultureInfo.CreateSpecificCulture(secondCulture))}");
+            Console.WriteLine($"Число {firstCultureId} " +
+                $"{firstNum.ToString(secondNum, firstCulture)}" +
+                $" vs Число {secondCultureId}" +
+                $" {firstNum.ToString(numInvar, secondCulture)}");
 
-                Console.WriteLine($"Дата {firstCulture} " +
-                    $"{now.ToString(date, CultureInfo.CreateSpecificCulture(firstCulture))} " +
-                    $"vs Дата {secondCulture}" +
-                    $" {now.ToString(date, CultureInfo.CreateSpecificCulture(secondCulture))}");
-            }
-
-            else
-            {
-                Console.WriteLine($"Число {firstCulture} " +
-                    $"{firstNum.ToString(secondNum, CultureInfo.CreateSpecificCulture(firstCulture))}" +
-                    $" vs Число {secondCulture} " +
-                    $"{firstNum.ToString(numInvar, CultureInfo.InvariantCulture)}");
-
-                Console.WriteLine($"Дата {firstCulture} " +
-                    $"{now.ToString(date, CultureInfo.CreateSpecificCulture(firstCulture))} " +
-                    $"vs Дата {secondCulture}" +
-                    $" {now.ToString(date, DateTimeFormatInfo.InvariantInfo)}");
-            }
+            Console.WriteLine($"Дата {firstCultureId} " +
+                $"{now.ToString(date, firstCulture)} " +
+                $"vs Дата {secondCultureId}" +
+                $" {now.ToString(date, secondCulture)}");
         }
     }
 }
