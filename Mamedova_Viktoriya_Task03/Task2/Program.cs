@@ -89,7 +89,7 @@ namespace Task2
                 {
                     for (int k = 0; k < randomArray.GetLength(2); k++)
                     {
-                        randomArray[i, j, k] = random.Next(-10, 10);
+                        randomArray[i, j, k] = random.Next(-15, 15);
                     }
                 }
             }
@@ -111,9 +111,4 @@ namespace Task2
         }
     }
 }
-            }
-
-            Console.ReadKey();
-        }
-    }
-}
+            
